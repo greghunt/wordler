@@ -10,6 +10,8 @@ export default function Index() {
         For groups of friends (wordlers) that like to SPAM their group chats.
       </p>
       <div className="my-20">
+        <h3 className="font-bold text-slate-600 text-xl uppercase italic">* In Progress</h3>
+        <p>You can find <a className="text-blue-500 underline" href="https://github.com/greghunt/wordler">the code here.</a></p>
         <Game />
       </div>
     </div>
