@@ -1,10 +1,8 @@
 import { useState } from "react"
 
-export default function Letter() {
-    const [letter, setLetter] = useState('A')
-
+export default function Letter({ x, y, letter, game, setLetter }) {
     const input = (event) => {
-        setLetter(event.target.value)
+        setLetter(event.target.value, x, y, game)
     }
 
     // const handleFocus = (event) => {
@@ -32,8 +30,8 @@ export default function Letter() {
             type="text"
             className="w-12 h-12 border-2 border-slate-600 inline-flex text-slate-200 items-center justify-center text-center bg-transparent"
             onChange={(e) => input(e)} value={letter}
-            onFocus={(e) => handleFocus(e)}
-            onKeyDown={(e) => handleKeyDown(e)}
+        // onFocus={(e) => handleFocus(e)}
+        // onKeyDown={(e) => handleKeyDown(e)}
         />
     )
 }

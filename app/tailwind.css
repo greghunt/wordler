@@ -544,10 +544,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: transparent;
 }
 
-.bg-none {
-  background-image: none;
-}
-
 .p-8 {
   padding: 2rem;
 }
