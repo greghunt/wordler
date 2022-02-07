@@ -1,10 +1,25 @@
-import { useState } from "react"
+import classNames from 'classnames/bind';
+import { useRef, useEffect } from 'react';
 
-export default function Letter({ x, y, letter, game, setLetter }) {
-    const input = (event) => {
-        setLetter(event.target.value, x, y, game)
-    }
+export default function Letter({ x, y, letter, focused, setLetter }) {
+    const inputEl = useRef(null);
 
+    useEffect(() => {
+        if (focused) inputEl.current.focus();
+    })
+
+    return (
+        <input
+            ref={inputEl}
+            type="text"
+            className={classNames("w-12 h-12 border-2 border-slate-600 inline-flex text-slate-200 items-center justify-center text-center bg-transparent", { 'bg-red-500': focused })}
+            onChange={(e) => setLetter(e.target.value, x, y)}
+            value={letter}
+        // onFocus={(e) => handleFocus(e)}
+        // onKeyDown={(e) => handleKeyDown(e)}
+        />
+    )
+}
     // const handleFocus = (event) => {
     //     // event.target.setSelectionRange(0, -1)
     // }
@@ -24,14 +39,3 @@ export default function Letter({ x, y, letter, game, setLetter }) {
     //         this.focusNextChar(target)
     //     }
     // }
-
-    return (
-        <input
-            type="text"
-            className="w-12 h-12 border-2 border-slate-600 inline-flex text-slate-200 items-center justify-center text-center bg-transparent"
-            onChange={(e) => input(e)} value={letter}
-        // onFocus={(e) => handleFocus(e)}
-        // onKeyDown={(e) => handleKeyDown(e)}
-        />
-    )
-}

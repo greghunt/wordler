@@ -23,8 +23,15 @@ export default function Game() {
         matrix: initMatrix(),
     })
 
-    const setLetter = (l, x, y, m) => {
+    const setLetter = (l, x, y) => {
+        let m = [...state.matrix]
         m[y][x] = l
+        if (x < m[y].length) {
+            x++;
+        } else {
+            x = 0;
+            y++;
+        }
         setState({ x: x, y: y, matrix: m })
     }
 
@@ -37,8 +44,8 @@ export default function Game() {
                             key={x}
                             x={x}
                             y={y}
+                            focused={state.x == x && state.y == y}
                             letter={letter}
-                            game={state.matrix}
                             setLetter={setLetter}
                         />)}
                 </Guess>
