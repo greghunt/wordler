@@ -12,6 +12,7 @@ export default function Letter({ x, y, letter, focused, setLetter }) {
         <input
             ref={inputEl}
             type="text"
+            maxLength={1}
             className={classNames("w-12 h-12 border-2 border-slate-600 inline-flex text-slate-200 items-center justify-center text-center bg-transparent", { 'bg-red-500': focused })}
             onChange={(e) => setLetter(e.target.value, x, y)}
             value={letter}

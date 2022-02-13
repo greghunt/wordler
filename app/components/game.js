@@ -26,13 +26,19 @@ export default function Game() {
     const setLetter = (l, x, y) => {
         let m = [...state.matrix]
         m[y][x] = l
+        const { x, y } = move(x, y, m)
+        setState({ x: x, y: y, matrix: m })
+    }
+
+    const move = (x, y, m) => {
         if (x < m[y].length) {
             x++;
         } else {
             x = 0;
             y++;
         }
-        setState({ x: x, y: y, matrix: m })
+
+        return { x, y }
     }
 
     return (
