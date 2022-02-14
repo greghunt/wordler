@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Letter from '~/components/letter';
+import whatsmyname from '~/whatsmyname.mp3';
 
 export default function Guess({ active, word, attempt, setAttempt }) {
     const letters = word.toUpperCase().split('');
@@ -9,6 +10,7 @@ export default function Guess({ active, word, attempt, setAttempt }) {
 
     const submitGuess = (event) => {
         event.preventDefault()
+        const audio = new Audio(whatsmyname);
         const values = Array.from(event.target.querySelectorAll('input:not([hidden])')).map(el => el.value)
         if (values.filter(i => i).length !== letters.length) {
             alert("Please fill in all the letters before guessing.")
@@ -18,8 +20,9 @@ export default function Guess({ active, word, attempt, setAttempt }) {
             setAttempt(() => attempt + 1)
         }
 
-        if (values.join('') === letters.join(''))
-            alert("You won!")
+        if (values.join('') === letters.join('')) {
+            audio.play();
+        }
     }
 
     const getResult = (index) => {
