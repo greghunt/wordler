@@ -5,7 +5,11 @@ export default function Letter({ index, setFocused, focused, result, active }) {
     const inputEl = useRef(null);
 
     useEffect(() => {
-        if (focused) inputEl.current.focus();
+        if (focused) {
+            inputEl.current.focus();
+            setTimeout(() => inputEl.current.click(), 100)
+        }
+
     })
 
     const [letter, setLetter] = useState('')
