@@ -43,7 +43,7 @@ export default function Guess({ active, word, attempt, setAttempt }) {
             {letters.map((letter, x) =>
                 <Letter key={x} index={x} focused={x == focused && active} setFocused={setFocused} submitGuess={submitGuess} letters={letters} result={getResult(x)} active={active} />
             )}
-            <input type="submit" hidden />
+            {active && <button type="submit">✅</button>}
         </form>
     )
 }
