@@ -35,7 +35,6 @@ export default function Letter({ index, setFocused, focused, result, active }) {
             value={letter}
             disabled={!active}
             onKeyDown={(e) => letterInput(e)}
-            readOnly
         />
     )
 }
